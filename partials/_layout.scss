@@ -1,0 +1,346 @@
+// layout -  ajeitando o conteudo da primeira parte da lading page
+
+// o que esta dentro da tag nav / mantem o site centralizado
+.container{
+   max-width: 1440px;
+   margin: 0 auto; 
+   padding: 0 8px;
+}
+
+
+//imagem de fundo
+
+.bg-home{
+    position: relative;
+}
+
+// pseudo elemento ( antes do conteudo e inserção da imagem)
+.bg-home::before{
+    content: ''; // sem conteudo
+    display: block;
+    position: absolute;
+    //no fundo havera um gradiente para baixo com uma cor para se fundir com outra foto
+    background-image: linear-gradient( to bottom, rgba(6, 18, 30, 0.1), #06121e), url("./assets/bg.svg");
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; //embaixo do conteudo
+    background-size: cover; // quem quebrar a imagem
+    background-repeat: no-repeat; // para não repetir a imagem
+    background-position: 50% 0;
+    opacity: 0.9; // opacidade
+
+}
+
+//------------------------------------------------------------
+
+//-------------------HERO-----------------------------------------
+.hero{
+    color: $white-normal;
+    min-height: 80vh; //minima altura
+
+    display: flex; //alinhar um do lado do outro
+    flex-direction: column; // um abaixo do outro
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
+
+
+    //acessando o h1 (casqueide)
+    h1{
+     text-align: center;
+     line-height: 158%;
+     max-width: 940px;
+     font-size: 46px ;
+    }
+
+    p{
+        text-align: center;
+        margin: 14px;
+    };
+}
+
+.button-contact{
+    padding: 14px 28px;
+    color: $white-normal;
+    background-color: $red-normal;
+    border: 0;
+    font-size: 18px;
+    font-weight: 600;
+    margin: 14px 0;
+
+}
+/////////////-----animação do botão----\\\\\\\\\\\\\\\\\
+
+.button-contact:hover{
+    animation: scaleButton 0.8s alternate infinite;
+}
+
+
+@keyframes scaleButton{
+    from{
+        transform: scale(1); //taminho original do botão
+    }
+    to{
+
+        transform: scale(1.07); //aumenta um pouco botão quando passa o mouse em cima 
+    }
+}
+
+
+
+
+@media screen and (max-width: 768ox){
+    .hero{
+        min-height: 60vh;
+        
+        h1{
+            font-size: 34px;
+            padding: 0 14px;
+            width: 100%;
+        }
+    
+    p{
+        font-size: 14px;
+    }    
+    }
+}
+
+
+@media screen and (max-width: 480px){
+    .hero h1{
+        font-size: 2px;
+     
+    }
+}
+
+//////////////-----------------------------------------------
+/// 
+
+//////////////--------------ABOUT-------------\\\\\\\\\\\\\\\\\\\\\\\\\
+
+.about{
+    background-color: $primary-normal;
+    overflow: hidden;
+    color: $white-normal;
+    
+}
+
+.about-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    padding: 34px 14px 64px 14px;
+
+img{
+    max-width: 570px ;
+    }
+}
+
+
+//cada div do sobre , ira disputar o mesmo tamanho na tela
+//as divs iram se dividir , ocupando o tamanho inteiro da tela
+.about-content div{
+ flex:1 ; 
+}
+
+.about-description{
+    h2{
+        font-size:  38px;
+        margin-bottom: 24px;
+
+    }
+
+    p{
+       margin-bottom: 14px;
+       line-height: 150%; 
+    }
+
+}
+
+@media screen and (max-width: 768px) {
+    .about-content{
+        flex-direction: column; //quando reduzido div ficara embaixo de div/ um abaixo do outro
+    }
+
+    
+}
+
+//////////////--------------SERVICES-------------\\\\\\\\\\\\\\\\\\\\\\\\\
+
+.services{
+    background-color: $white-normal;
+    color: $black-normal;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 54px 14px;
+}
+
+
+//alinhar o titulo do sericços e o paragrafo
+.services-content h2{
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 38px;
+    margin-bottom: 14px;
+
+}
+
+
+.services-content p{
+    line-height: 150%;
+    margin-bottom: 14px;
+    text-align: center;
+    max-width: 780px;
+   
+}
+
+//////////////--------------HARICUTS-------------\\\\\\\\\\\\\\\\\\\\\\\\\
+// Controla os itens dos serviços, alinhando os itens ao lado do outro
+
+
+.haircuts{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 17px;  //espaçamento entre os itens 
+    padding: 0 44px 34 px 44px;
+}
+
+.haircut{
+    flex: 1; //cada div tentar ocupar o tamanho igual
+    display: flex;
+    flex-direction: column ;
+    background-color: $white-normal;
+    border-radius: 8px;
+    box-shadow: 0px -1px 17px -4px  rgba(0,0,0, 0.5); // sombra eem volta das divs de serviço com opacidade
+
+    //o elemento ( a haircut recebeu um border-radius , mas a imagem não, vazando a imagem quadrada em cima, então 
+    //essa propriedade ajuda a esconder tudo que vasa para fora da div
+    overflow: hidden; 
+
+    img{
+        width: 100%;
+        max-width: 354px;
+        transition: transform 0.25s; // transição da imagem do estado inicial para maior mais lenta
+            
+    }
+}
+
+.haircut img:hover{
+    transform: scale(1.2);
+    z-index:1;
+
+}
+
+.haircut-info{
+    width: 100%;
+    display: flex;
+    justify-content: space-between ; //cada item pra um lado da div
+    padding: 14px;
+    background-color: $white-normal;
+
+    //deixara a informação dos serviços a frente da foto, sendo assim a foto não ira sobrepor as informações
+    z-index: 99; 
+}
+
+.haircut-info button{
+    color: $white-normal;
+    background-color: $red-normal;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 0;
+    margin-right: 30px;
+    cursor: default;// tira o efeito do botão que da a insinuação de levar a algum lugar
+   
+}
+
+@media screen and (max-width: 768px){
+    .haircuts{
+        flex-direction: column;
+    }
+
+    .haircut img{
+        max-width: 740px;
+    }
+    
+}
+
+
+//////////////--------------FOOTER / MAPA-------------\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+.footer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 54px 0;
+    gap: 24px;
+    color: $white-normal;
+}
+
+.footer-icons{
+    display: flex;
+    gap: 8px; //espaçamento entre os icones
+    color: $white-normal;
+}
+
+//////////////--------------BOTÃO WHATSAPP-------------\\\\\\\\\\\\\\\\\\\\\\\\\
+/// 
+
+.btn-whatsapp{
+    position: fixed;
+    bottom: 14px;
+    right: 24px;
+    z-index: 99;
+
+    img{
+        max-width: 74px;
+        transition: transform 0.4s;
+    }
+
+
+img:hover{
+    transform: scale(1.1); // fica muito rapaido precisa configurar a transição na tag de elmento aqui no css
+    }
+}
+
+.btn-whatsapp .tooLtip-text{
+    visibility: hidden; //escondido inicialmente
+    position: absolute;
+    width: 170px;
+    top: 8px;
+    left: -170px;
+    padding: 2px;
+    border-radius: 8px;
+    text-align: center;
+    background-color: $black-normal;
+    color: $white-normal;
+    opacity: 0;
+    transition: opacity 0.4s;
+
+}
+
+.btn-whatsapp:hover .tooLtip-text{
+    visibility: visible; //escondido inicialmente
+    opacity: 1;
+
+
+}
+
+
+@media screen and (max-width: 768px ) {
+
+    .btn-whatsapp{
+          img{
+            max-width: 64px;
+        
+        }
+    
+    }  
+}
