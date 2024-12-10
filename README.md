@@ -22,7 +22,7 @@
 - Design responsivo para diferentes tamanhos de dispositivos.
 - Seção de apresentação dos serviços oferecidos pela barbearia.
 - Formulário de contato para clientes solicitarem informações ou agendamentos.
-- Navegação intuitiva com links para as principais seções da página.
+
 
 ## Como Executar o Projeto
 
